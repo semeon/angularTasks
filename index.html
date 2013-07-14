@@ -1,0 +1,160 @@
+﻿
+<!DOCTYPE html>
+<html lang="en" ng-app="appModule">
+  <!-- 
+    Examples:
+    http://twitter.github.com/bootstrap/components.html
+
+    Libs
+    http://habrahabr.ru/post/154687/
+  -->
+
+  <head>
+    <meta charset="utf-8">
+    <title>Free tasks - GoogleTasks UI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+
+      <LINK REL="SHORTCUT ICON" HREF="img/fav/favicon1.ico">
+
+    <!-- Libraries -->
+      <link rel="stylesheet" href="jslib/bootstrap/css/bootstrap.css">
+      <link rel="stylesheet" href="jslib/bootstrap/css/bootstrap-responsive.css" >
+      <link rel="stylesheet" href="jslib/pnotify/jquery.pnotify.default.css"/>
+
+    <!-- SCRIPTS -->
+
+      <script type="text/javascript" 
+              language="javascript" 
+              src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+      <script type="text/javascript" language="javascript" src="jslib/jquery/jquery-1.9.1.min.js"></script>
+      <script type="text/javascript" language="javascript" src="jslib/jquery.url.js"></script>
+
+<!-- 
+      <script type="text/javascript" language="javascript" src="jslib/bootstrap/js/bootstrap.js"></script>
+      <script type="text/javascript" language="javascript" src="jslib/pnotify/jquery.pnotify.js"></script>
+      <script type="text/javascript" language="javascript" src="jslib/moment.min.js"></script>
+      <script type="text/javascript" language="javascript" src="jslib/jquery.cookie.js"></script>
+
+ -->
+
+
+
+
+      <!-- Custom Script -->
+
+      <script type="text/javascript" language="javascript" src="jscode/app.js"></script>
+      <script type="text/javascript" language="javascript" src="jscode/controllers.js"></script>
+      <script type="text/javascript" language="javascript" src="jscode/services.js"></script>
+
+<!-- 
+      <script type="text/javascript" language="javascript" src="jscode/settings/appSettings.js"></script>
+      <script type="text/javascript" language="javascript" src="jscode/settings/userSettings.js"></script>
+
+      <script type="text/javascript" language="javascript" src="jscode/auth/AuthController.js"></script>
+      <script type="text/javascript" language="javascript" src="jscode/auth/AuthView.js"></script>
+
+      <script type="text/javascript" language="javascript" src="jscode/page/PageController.js"></script>
+      <script type="text/javascript" language="javascript" src="jscode/page/PageView.js"></script>
+
+      <script type="text/javascript" language="javascript" src="jscode/api/gDataController.js"></script>
+
+      <script type="text/javascript" language="javascript" src="jscode/data/DataController.js"></script>
+
+ -->
+      <!-- <script type="text/javascript" language="javascript" src="jscode/data/DataEventHandler.js"></script> -->
+
+
+<!-- 
+      <script type="text/javascript" language="javascript" src="jscode/data/DataView.js"></script>
+      <script type="text/javascript" language="javascript" src="jscode/data/TaskTreeView.js"></script>
+      <script type="text/javascript" language="javascript" src="jscode/data/TaskNodeView.js"></script>
+
+ -->
+
+
+      <!--
+      <script type="text/javascript" language="javascript" src="jscode/data/DataModel.js"></script>
+      -->
+
+<!-- 
+      <script type="text/javascript" language="javascript" src="jscode/data/TaskModel.js"></script>
+      <script type="text/javascript" language="javascript" src="jscode/data/ProjectModel.js"></script>
+
+ -->
+
+      <!-- 
+      <script type="text/javascript" language="javascript" src="jscode/data/ProjectListView.js"></script>
+      <script type="text/javascript" language="javascript" src="jscode/data/TaskPaneView.js"></script>
+      -->
+      <!-- 
+      <script type="text/javascript" language="javascript" src="jscode/app/AppController.js"></script>
+      <script type="text/javascript" language="javascript" src="jscode/app/AppView.js"></script>    
+      -->
+
+    <!-- Custom Styles -->
+      
+      <link rel="stylesheet" href="css/tasks.css">
+
+
+  </head>
+
+
+  <body onloadq="onBodyLoad();">
+
+    <!-- Top nav bar -->
+    <div class="navbar navbar-inverseX navbar-fixed-top"> 
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <img src="img/tasks-28.png" class="pull-left" style="margin-right: 15px; margin-top: 5px;"/> 
+          <a class="brand" href="http://localhost/" onclickx="return false;">GoogleTasks UI</a>
+          <ul class="nav nav-pills">
+            <li><a href="https://mail.google.com/tasks/canvas"                      target="_blank">GTasks Canvas</a></li>
+            <li><a href="http://twitter.github.com/bootstrap/components.html"       target="_blank">Bootstrap Manual</a></li>
+            <li><a href="http://www.w3resource.com/twitter-bootstrap/tutorial.php"  target="_blank">Bootstrap Tutorial</a></li>
+            <li><a href="http://pinesframework.org/pnotify/"                        target="_blank">Pine Notify</a></li>
+          </ul>
+
+          <div class="pull-right" ng-controller="AuthCtrl">
+            <ul class="nav pull-right nav-pills">
+              <li id="loginButton"></li>  
+            </ul>
+            <p id="loginStatus" class="navbar-text pull-right">{{loginStatusMsg}}</p>       
+          </div>
+        </div>
+      </div>
+    </div> 
+    <!-- /Top nav bar -->
+
+
+    <div class="container-fluid"> <!--fluid-container-->
+
+
+      <div ng-view></div>
+
+      <footer>
+        <p>&copy; Semeon</p>
+      </footer>
+
+    </div><!--/fluid-container-->
+
+<!--   
+    <script type="text/javascript" language="javascript" src="jscode/main.js"></script> 
+  
+ -->
+  </body>
+</html>
