@@ -1,34 +1,48 @@
+
+// Welcome page controller
+// -----------------------------------------------------
 function WelcomeCtrl($scope, AppSettings) {
 
   console.log('Controller: ' + 'WelcomeCtrl');
 
-  // $scope.sys = AppSettings.sys;
-  // $scope.auth = AppSettings.auth;
+  $scope.sys = AppSettings.sys;
+  $scope.auth = AppSettings.auth;
 
-  // $scope.proceed = function() {
-  //   if ($scope.sys.logging) {
-  //     console.log($scope.auth.clientId);
-  //   }
-  // }
-
-
+  $scope.proceed = function() {
+    if ($scope.sys.logging) {
+      console.log($scope.auth.clientId);
+    }
+  }
 }
 
+
+// Auth page controller
+// -----------------------------------------------------
 function AuthCtrl($scope, AppSettings, $location) {
   $scope.sys = AppSettings.sys;
   $scope.auth = AppSettings.auth;
 
-  console.log('Controller: ' + 'AuthCtrl');
+  if ($scope.sys.logging) {
+    console.log('Controller started: ' + 'AuthCtrl');
+  }
 
-  var fakeUrl = 'http://host/?' + $location.path().substr(1);
-  var urlAccToken = $.url(fakeUrl).param('access_token');   
-  console.log('urlAccToken: ' + urlAccToken);
+  if ($scope.sys.logging) {
+    console.log('AuthCtrl - accessToken: ' + $scope.auth.accessToken);
+  }
 
 
-  $scope.loginStatusMsg = 'Not Logged In';
+  if ($scope.auth.accessToken) {
+    $scope.loginStatusMsg = 'You are logged in';
+
+    if ($scope.sys.logging) {
+      console.log('Redirecting to /main');
+    }
+    $location.path('/main'); 
+
+  }
+
 
   $scope.login = function() {
-
     if ($scope.sys.logging) {
       console.log('Login started...');
     }
@@ -48,11 +62,17 @@ function AuthCtrl($scope, AppSettings, $location) {
 }
 
 
+// Auth page controller
+// -----------------------------------------------------
 function MainCtrl($scope, AppSettings) {
   $scope.sys = AppSettings.sys;
   $scope.auth = AppSettings.auth;
 
-  console.log('Controller: ' + 'MainCtrl');
+  if ($scope.sys.logging) {
+    console.log('Controller started: ' + 'MainCtrl');
+  }
 
-
+  if ($scope.sys.logging) {
+    console.log('MainCtrl - accessToken: ' + $scope.auth.accessToken);
+  }
 }

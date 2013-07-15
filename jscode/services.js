@@ -40,7 +40,9 @@
       }
 
       // settings.auth.redirectUri = location;
-      settings.auth.redirectUri = 'http://localhost/';
+      // var rUri = escape('http://localhost/#/main');
+      // console.log(rUri);
+      settings.auth.redirectUri = location;
 
       // scope (required)
       // URL identifying the Google service to be accessed. 
@@ -58,7 +60,11 @@
       settings.auth.state = '';
 
       settings.auth.accessToken = false;
-      var urlAccToken = ''; //$.url(window.location.href).fparam('access_token');   
+      // var urlAccToken = ''; //$.url(window.location.href).fparam('access_token');   
+
+      // var fakeUrl = 'http://host/?' + $location.path().substr(1);
+      var fakeUrl = window.location.href.replace('#/', '?');
+      var urlAccToken = $.url(fakeUrl).param('access_token');   
 
       if (urlAccToken != undefined && urlAccToken != '') {
         settings.auth.accessToken = urlAccToken;
