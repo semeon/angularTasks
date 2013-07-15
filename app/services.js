@@ -63,19 +63,6 @@
         settings.auth.accessToken = urlAccToken;
       }
 
-
-    // Google Tasks API settings
-    // ----------------------------------------------------------------
-      settings.api = {};
-  
-      settings.api.projectsRequestUri = 'https://www.googleapis.com/tasks/v1/users/@me/lists?callback=JSON_CALLBACK';
-
-      settings.api.tasksRequestUri = function(projectId) {
-        var uri = 'https://www.googleapis.com/tasks/v1/lists/' + projectId + '/tasks?callback=?';
-        return uri;
-      };
-
-
     return settings;
   });
 
@@ -90,5 +77,31 @@
 
     return state;
   });
+
+
+// Google Tasks API
+// -------------------------------------------
+  appModule.factory('gTasksApi', ['$http', 'AppSettings', function($http, AppSettings) {
+
+    var api = {};
+
+
+    api.projectsRequestUri = 'https://www.googleapis.com/tasks/v1/users/@me/lists?callback=JSON_CALLBACK';
+
+    api.tasksRequestUri = function(projectId) {
+      var uri = 'https://www.googleapis.com/tasks/v1/lists/' + projectId + '/tasks?callback=?';
+      return uri;
+    };
+
+
+    var params = {access_token: AppSettings.auth.accessToken};
+
+    api.requestProjects = function(callback) {
+        $http.jsonp(api.projectsRequestUri, {params: params}).success(callback);
+    }
+
+
+    return api;
+  }]);
 
 
