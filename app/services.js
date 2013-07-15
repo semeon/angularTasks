@@ -9,7 +9,6 @@
       settings.sys.logging = true;
 
 
-
     // Auth settings
     // ----------------------------------------------------------------
       settings.auth = {};
@@ -63,6 +62,18 @@
       if (urlAccToken != undefined && urlAccToken != '') {
         settings.auth.accessToken = urlAccToken;
       }
+
+
+    // Google Tasks API settings
+    // ----------------------------------------------------------------
+      settings.api = {};
+  
+      settings.api.projectsRequestUri = 'https://www.googleapis.com/tasks/v1/users/@me/lists?callback=JSON_CALLBACK';
+
+      settings.api.tasksRequestUri = function(projectId) {
+        var uri = 'https://www.googleapis.com/tasks/v1/lists/' + projectId + '/tasks?callback=?';
+        return uri;
+      };
 
 
     return settings;

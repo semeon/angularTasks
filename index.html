@@ -131,6 +131,7 @@
         <div class="container-fluid">
           <img src="img/tasks-28.png" class="pull-left" style="margin-right: 15px; margin-top: 5px;"/> 
           <a class="brand" href="http://localhost/" onclickx="return false;">GoogleTasks UI</a>
+
           <ul class="nav nav-pills">
             <li><a href="https://mail.google.com/tasks/canvas"                      target="_blank">GTasks Canvas</a></li>
             <li><a href="http://twitter.github.com/bootstrap/components.html"       target="_blank">Bootstrap Manual</a></li>
@@ -139,12 +140,13 @@
             <li><a href="http://docs.angularjs.org/"                                target="_blank">AngularJS</a></li>
           </ul>
 
+          <ul class="nav nav-pills pull-right" ng-show="state.loggedIn">
+            <li id="loginButton"><a href="" ng-click="logout()">Sign out</a></li>  
+          </ul>
+
           <div id="loginStatus" class="pull-right">
-            <ul class="nav pull-right nav-pills">
-              <li id="loginButton"></li>  
-            </ul>
             <p class="navbar-text pull-right" ng-hide="state.loggedIn">You are not logged in.</p>
-            <p class="navbar-text pull-right" ng-show="state.loggedIn">You are logged into Google.</p>
+<!--             <p class="navbar-text pull-right" ng-show="state.loggedIn">You are logged into Google.</p> -->
           </div>
         </div>
       </div>

@@ -20,6 +20,5 @@ function AuthCtrl($scope, AppSettings, $location, $log) {
     $log.info('- requestUri: ' + requestUri);
 
     window.location.href = requestUri;
-
   }
 }
