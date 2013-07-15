@@ -4,15 +4,15 @@
     var settings = {};
 
     // System Settings
+    // ----------------------------------------------------------------
       settings.sys = {};
       settings.sys.logging = true;
 
 
 
     // Auth settings
+    // ----------------------------------------------------------------
       settings.auth = {};
-      settings.auth.clientId = '345458471597.apps.googleusercontent.com';
-
 
       // http://code.google.com/apis/accounts/docs/OAuth2.html
       settings.auth.requestUriBase = 'https://accounts.google.com/o/oauth2/auth';
@@ -30,19 +30,14 @@
       // You'll need to register the redirect_uri you'd like to use in advance. 
       // See the Registering your app with Google section for details on how to register.
       //
-      //                https://code.google.com/apis/console
+      //    https://code.google.com/apis/console
       //
-      
-      // var streetaddress= addy.substr(0, addy.indexOf(','));
       var location = window.location.href;
       if( location.indexOf('#') != -1 ) {
         location = location.substr(0, location.indexOf('#'));
       }
-
-      // settings.auth.redirectUri = location;
-      // var rUri = escape('http://localhost/#/main');
-      // console.log(rUri);
       settings.auth.redirectUri = location;
+
 
       // scope (required)
       // URL identifying the Google service to be accessed. 
@@ -59,10 +54,9 @@
       // This value will be appended to your redirect_uri after the user takes an action on the OAuth dialog.
       settings.auth.state = '';
 
-      settings.auth.accessToken = false;
-      // var urlAccToken = ''; //$.url(window.location.href).fparam('access_token');   
 
-      // var fakeUrl = 'http://host/?' + $location.path().substr(1);
+      // access token 
+      settings.auth.accessToken = false;
       var fakeUrl = window.location.href.replace('#/', '?');
       var urlAccToken = $.url(fakeUrl).param('access_token');   
 
@@ -74,5 +68,16 @@
     return settings;
   });
 
+
+// Application State
+// -------------------------------------------
+  appModule.factory('AppState', function(){
+    var state = {};
+
+    state.loggedIn = false;
+
+
+    return state;
+  });
 
 

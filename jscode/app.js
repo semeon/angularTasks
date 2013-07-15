@@ -1,4 +1,4 @@
-var appModule = angular.module('appModule', []);
+var appModule = angular.module('appModule', ['ngCookies']);
 
 
 appModule.config(['$routeProvider', function($routeProvider) {
@@ -11,7 +11,3 @@ appModule.config(['$routeProvider', function($routeProvider) {
 
 }]);
 
-
-// appModule.config(['$locationProvider', function($locationProvider) {
-//   $locationProvider.html5Mode(true);
-// }]);
