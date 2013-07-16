@@ -97,7 +97,10 @@
     var params = {access_token: AppSettings.auth.accessToken};
 
     api.requestProjects = function(callback) {
-        $http.jsonp(api.projectsRequestUri, {params: params}).success(callback);
+        $http.jsonp(api.projectsRequestUri, {params: params}).
+        success( function(data) {
+                  callback(data);
+                });
     }
 
 

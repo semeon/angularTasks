@@ -1,32 +1,69 @@
 function MainCtrl($scope, AppSettings, gTasksApi, $log, $http) {
 
+	$log.info('');
+	$log.info('Controller started: ' + 'MainCtrl');
+
  	$scope.sys = AppSettings.sys;
 	$scope.auth = AppSettings.auth;
 	$scope.api = gTasksApi;
 
-	$log.info('');
-	$log.info('Controller started: ' + 'MainCtrl');
+	// $scope.projects = {};
+	$scope.projects = [];
 
 	$scope.loadProjects = function() {
 		$log.info('- starting projects load');
 		$log.info('- request uri: ' + $scope.api.projectsRequestUri);
 
-		// $http.jsonp($scope.api.projectsRequestUri, 
-		// 			{params: {access_token: $scope.auth.accessToken}}
-		// 			);
+		// Response processor
+		// -----------------------------------------------
+			var processProjects = function (data) {
+				$log.info('** AJAX *************************');
+				$log.info('- Projects list request answered');
+				$log.info(data);
+				$log.info('*********************************');
 
-		$scope.api.requestProjects();
+	            if (data.items) {
+	                var items = data.items; 
+	                for (var i = 0; i < items.length; i++) {
+	                    // PROJECT CREATED HERE
+	                    var project = new Project(items[i]);
+	                    $log.info('- creating new project: ' + project.title);
+	                    // $scope.projects[project.id] = project;
+	                    $scope.projects.push(project);
+	                    // loadTasks(project);
+	                }
+	                // self.eventHandler.projectListLoaded();
 
+	            } else if (data.error) {
+	                dataLoadErrorOccured = true;
+	                pageController.processDataLoadError(data.error);
+
+	            } else {
+	                dataLoadErrorOccured = true;
+	                pageController.processDataLoadError();
+
+	            }
+
+			}
+
+		// Request
+		// -----------------------------------------------
+			$scope.api.requestProjects(processProjects);
 	}
 
-	var aaa = function (data) {
-		$log.info('--------------');
-		$log.info(data);
-		$log.info('--------------');
-	}
 
 	$scope.start = function() {
-		$scope.loadProjects(aaa);
+		$scope.loadProjects();
+
+		// $scope.loadProjects(
+		// 	function (data) {
+		// 		$log.info('--------------');
+		// 		$log.info(data);
+		// 		$log.info('--------------');
+		// 	}
+		// );
+
+
 	}
 
 
