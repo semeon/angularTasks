@@ -10,6 +10,11 @@ hr {
 	border-bottom: 1px solid #ddd;
 }
 
+.border-right {
+	border-right: 1px solid #ddd;
+}
+
+
 .all-caps {
 	text-transform: uppercase;
 }

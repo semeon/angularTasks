@@ -1,14 +1,15 @@
       <div id="mainRow" class="row-fluid">
 
-        <div id="projectListPane" class="span3">
+        <div id="projectListPane" class="span3 border-right">
             <div class="row-fluid">
-              <div class="span12 well well-small">
+              <div class="span12 wells well-small">
                 <div class="btn-group pull-right">
                   <a id="addNewProjectButton" class="btn btn-mini btn" href="#">Add project</a>
                 </div>    
                 <ul id="projectListRoot" class="nav nav-pills nav-stacked">
                   <li class="nav-header">Your projects</li>
-                  <li ng-repeat="project in projects">{{project.title}}</li>
+                  <li ng-repeat="project in projects" 
+                      ng-class="project.cssClass"><a href="" ng-click="projectClick(project)">{{project.title}}</a></li>
                 </ul>
               </div>
             </div>
