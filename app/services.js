@@ -7,6 +7,7 @@
     // ----------------------------------------------------------------
       settings.sys = {};
       settings.sys.logging = true;
+      settings.sys.rootAddress = 'http://localhost/angularTasks/';
 
 
     // Auth settings
@@ -72,8 +73,10 @@
   appModule.factory('AppState', function(){
     var state = {};
 
-    state.loggedIn = false;
 
+    // AUTH
+    // ------------------------------------------
+    state.loggedIn = false;
 
     return state;
   });

@@ -1,17 +1,15 @@
 function AppCtrl($scope, AppSettings, AppState, $cookies, $location, $log) {
+    $log.info('');
+    $log.info('Controller started: ' + 'AppCtrl');
 
   // Constructor
   // ---------------------------
 
-    $log.info('');
-    $log.info('Controller started: ' + 'AppCtrl');
-
     $scope.sys = AppSettings.sys;
     $scope.auth = AppSettings.auth;
+    $scope.state = AppState;
 
     $log.info('- accessToken: ' + $scope.auth.accessToken);
-
-    $scope.state = AppState;
 
     // Logged In
     // -----------------------------------
@@ -48,6 +46,20 @@ function AppCtrl($scope, AppSettings, AppState, $cookies, $location, $log) {
   $scope.logout = function () {
     // TODO
     window.location.href = $scope.auth.redirectUri;
+  }
+
+  $scope.getAppRootUrl = function () {
+    var result = '';
+    var url = $location.absUrl();
+    var ind = url.indexOf('#');
+
+    $log.info('- url: ' + url);
+    $log.info('- ind: ' + ind);
+
+    if(ind > 0) result = url.slice(0, ind);
+    $log.info('- result: ' + result);
+
+    return result;
   }
 
 
