@@ -10,8 +10,7 @@ function MainCtrl($scope, AppSettings, gTasksApi, $log, $http) {
 	// $scope.projects = {};
 	$scope.projects = [];
 
-
-	// Functions: Project lsit
+	// Functions: Task pane
 	// ---------------------------------
 		$scope.projectClick = function (project) {
 			$log.info('- project clicked: ' + project.title);
@@ -25,7 +24,18 @@ function MainCtrl($scope, AppSettings, gTasksApi, $log, $http) {
 		}
 
 
+	// Functions: Project lsit
+	// ---------------------------------
+		$scope.projectClick = function (project) {
+			$log.info('- project clicked: ' + project.title);
+			project.isSelected = !project.isSelected;
 
+			if (project.isSelected) {
+				project.cssClass = 'active';	
+			} else {
+				project.cssClass = '';	
+			}
+		}
 
 	// Functions: Data
 	// ---------------------------------
