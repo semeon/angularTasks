@@ -4,7 +4,8 @@
             <div class="row-fluid">
               <div class="span12 wells well-small">
                 <div class="btn-group pull-right">
-                  <a id="addNewProjectButton" class="btn btn-mini btn" href="#">Add project</a>
+                  <a id="addNewProjectButton" class="btn btn-mini btn" href="#"><i class="icon-plus zicon-white"></i>
+                  New Project</a>
                 </div>    
                 <ul id="projectListRoot" class="nav nav-pills nav-stacked">
                   <li class="nav-header">Your projects</li>
@@ -33,20 +34,37 @@
             <div id="taskPaneRoot" class="span12">
 
             <!-- Project -->
-              <div class="row-fluid">
-                <div class="span3">
-                  <strong>project.title</strong>
-                </div>
+              <div class="row-fluid" ng-repeat="project in projects" ng-show="project.isSelected">
 
-                <div class="span9">
-                  <div class="btn-toolbar pull-right no-margin">
-                    <a class="btn btn-mini btn-primary" href="#"><i class="icon-plus icon-white"></i></a>
-                    <div class="btn-group">';
-                      <a class="btn btn-mini" href="#" onclick="return false;" rel="tooltip" title="Hide project">Collapse</a>
-                      <a class="btn btn-mini" href="#" onclick="return false;" rel="tooltip" title="Hide project">Hide</a>
+                <!-- Header -->
+<!-- 
+                <div class="border-bottom">
+                </div>
+ -->
+                  <!-- Title -->
+                  <div class="span3">
+                    <strong>{{project.title}}</strong>
+                  </div>
+
+                  <!-- Controls -->
+                  <div class="span9">
+                    <div class="btn-toolbar pull-right no-margin">
+                      <a class="btn btn-mini zbtn-primary" href="#"><i class="icon-plus zicon-white"></i> New Task</a>
+                      <div class="btn-group">';
+                        <a class="btn btn-mini" href="#" onclick="return false;" rel="tooltip" title="Hide project">Collapse</a>
+                        <a class="btn btn-mini" href="#" onclick="return false;" rel="tooltip" title="Hide project">Hide</a>
+                      </div>
                     </div>
                   </div>
-                </div>
+
+                  <!-- Separator -->
+
+<!-- 
+                  <div class="span12 border-bottom">
+                  </div>
+ -->
+
+
               </div>
                 
             </div>
