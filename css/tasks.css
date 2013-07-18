@@ -20,6 +20,29 @@ hr {
 }
 
 
+
+
+
+.fadeIn-setup,.fadeOut-setup {
+      -webkit-transition: 2s linear opacity;
+      -moz-transition: 2s linear opacity;
+      -o-transition: 2s linear opacity;
+      transition: 2s linear opacity;
+    }
+.fadeIn-setup{
+    opacity:0;
+}
+.fadeOut-setup{
+    opacity:1;
+}
+.fadeIn-setup.fadeIn-start {
+    opacity: 1;
+}
+.fadeOut-setup.fadeOut-start{
+    opacity:0;
+}
+
+
 /* Sidenav from BS Docs - applief for task tree */
 /* -------------------------------------------------- */
 
