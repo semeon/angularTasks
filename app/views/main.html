@@ -4,8 +4,7 @@
             <div class="row-fluid">
               <div class="span12 wells well-small">
                 <div class="btn-group pull-right">
-                  <a id="addNewProjectButton" class="btn btn-mini btn" href="#"><i class="icon-plus zicon-white"></i>
-                  New Project</a>
+                  <a id="addNewProjectButton" class="btn btn-mini btn" href="#"><i class="icon-plus zicon-white"></i> New Project</a>
                 </div>    
                 <ul id="projectListRoot" class="nav nav-pills nav-stacked">
                   <li class="nav-header">Your projects</li>
@@ -53,7 +52,7 @@
                   <div class="span9">
                     <div class="btn-toolbar pull-right no-margin">
                       <a class="btn btn-mini zbtn-primary" href="#"><i class="icon-plus zicon-white"></i> New Task</a>
-                      <div class="btn-group">';
+                      <div class="btn-group">
                         <a class="btn btn-mini" href="#" onclick="return false;" rel="tooltip" title="Hide project">Collapse</a>
                         <a class="btn btn-mini" href="#" onclick="return false;" rel="tooltip" title="Hide project">Hide</a>
                       </div>
@@ -67,6 +66,17 @@
                   </div>
  -->
 
+                  <!-- task Tree -->
+                  <div class="wellz well-small" style="margin-left: 20px; margin-bottom: 30px;">
+                    <ul class="nav nav-list bs-docs-sidenav task-tree">
+                      <li class=""
+                        ng-repeat="task in project.tasks">
+                        <a href="#" onclick="return false">{{task.title}}</a>
+                      </li>
+                    </ul>
+                  </div>
+
+
 
               </div>
                 
@@ -75,3 +85,10 @@
 
         </div>
       </div>
+
+
+<!-- 
+BUILD TREE 
+http://jsfiddle.net/ganarajpr/vzvmS/3/
+
+-->

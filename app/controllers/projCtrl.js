@@ -32,21 +32,16 @@ function Project(json) {
     // -----------------------------------------------------------------------
 
         this.addTasks = function(tasks) {
-
-            // self.tasks = tasks;
-
-            // for (var i = 0; i < tasks.length; i++) {
-            //     var task = new Task(tasks[i]);
-
-            //     console.log('  Creating task #' + i + ' ' + task.title);
-            //     self.taskSet[task.id] = task;
-            // }
+            for (var i = 0; i < tasks.length; i++) {
+                var task = new Task(tasks[i]);
+                self.tasks.push(task);
+                // self.taskSet[task.id] = task;
+            }
 
             // // var sortedData = cats = $(data).sort(sortItemsByTitle); 
 
             // self.taskTree.id = 'none';
             // self.taskTree.title = 'root';
-            // console.log('  Building task tree.');
             // attachChildrenToParent(self.taskTree, self.taskSet, 0);
         }
 
@@ -78,10 +73,10 @@ function Project(json) {
 
         } // 
 
-    // Sorting
-    function sortItemsByTitle(a,b) {  
-        return a.title.toLowerCase() > b.title.toLowerCase() ? 1 : -1;  
-    } // ---------------------------------------------------------------------
+    // // Sorting
+    // function sortItemsByTitle(a,b) {  
+    //     return a.title.toLowerCase() > b.title.toLowerCase() ? 1 : -1;  
+    // } // ---------------------------------------------------------------------
 
  
 }

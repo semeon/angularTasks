@@ -92,7 +92,7 @@
     api.projectsRequestUri = 'https://www.googleapis.com/tasks/v1/users/@me/lists?callback=JSON_CALLBACK';
 
     api.tasksRequestUri = function(projectId) {
-      var uri = 'https://www.googleapis.com/tasks/v1/lists/' + projectId + '/tasks?callback=?';
+      var uri = 'https://www.googleapis.com/tasks/v1/lists/' + projectId + '/tasks?callback=JSON_CALLBACK';
       return uri;
     };
 
@@ -103,6 +103,13 @@
         $http.jsonp(api.projectsRequestUri, {params: params}).
         success( function(data) {
                   callback(data);
+                });
+    }
+
+    api.requestTasks = function(project, callback) {
+        $http.jsonp(api.tasksRequestUri(project.id), {params: params}).
+        success( function(data) {
+                  callback(data, project);
                 });
     }
 

@@ -31,7 +31,8 @@ function MainCtrl($scope, AppSettings, gTasksApi, $log, $http) {
 			project.isSelected = !project.isSelected;
 
 			if (project.isSelected) {
-				project.cssClass = 'active';	
+				project.cssClass = 'active';
+				$scope.loadTasks(project);
 			} else {
 				project.cssClass = '';	
 			}
@@ -39,17 +40,48 @@ function MainCtrl($scope, AppSettings, gTasksApi, $log, $http) {
 
 	// Functions: Data
 	// ---------------------------------
+
+		$scope.loadTasks = function(project) {
+			$log.info('** AJAX REQUEST **');
+			$log.info('- starting projects load');
+			$log.info('- request uri: ' + $scope.api.projectsRequestUri);
+
+			// Response processor
+			// -----------------------------------------------
+				var processTaskList = function (data, project) {
+					$log.info('** AJAX RESPONSE **');
+					$log.info('- Task list request answered, project: ' + project.title);
+					$log.info(data);
+
+					if (data.items) {      
+						project.addTasks(data.items);
+
+					} else if (data.error) {
+						// dataLoadErrorOccured = true;
+						// pageController.processDataLoadError(data.error);
+					} else {
+						// dataLoadErrorOccured = true;
+						// pageController.processDataLoadError();
+					}
+				}
+
+			// Request
+			// -----------------------------------------------
+			    $scope.api.requestTasks(project, processTaskList);
+		}
+
+
 		$scope.loadProjects = function() {
+			$log.info('** AJAX REQUEST **');
 			$log.info('- starting projects load');
 			$log.info('- request uri: ' + $scope.api.projectsRequestUri);
 
 			// Response processor
 			// -----------------------------------------------
 				var processProjects = function (data) {
-					$log.info('** AJAX *************************');
+					$log.info('** AJAX RESPONSE **');
 					$log.info('- Projects list request answered');
 					$log.info(data);
-					$log.info('*********************************');
 
 		            if (data.items) {
 		                var items = data.items; 
@@ -57,20 +89,18 @@ function MainCtrl($scope, AppSettings, gTasksApi, $log, $http) {
 		                    // PROJECT CREATED HERE
 		                    var project = new Project(items[i]);
 		                    $log.info('- creating new project: ' + project.title);
-		                    // $scope.projects[project.id] = project;
 		                    $scope.projects.push(project);
-		                    // loadTasks(project);
+		                    // $scope.projects[project.id] = project;
+		                    // $scope.loadTasks(project);
 		                }
 		                // self.eventHandler.projectListLoaded();
 
 		            } else if (data.error) {
-		                dataLoadErrorOccured = true;
-		                pageController.processDataLoadError(data.error);
-
+		                // dataLoadErrorOccured = true;
+		                // pageController.processDataLoadError(data.error);
 		            } else {
-		                dataLoadErrorOccured = true;
-		                pageController.processDataLoadError();
-
+		                // dataLoadErrorOccured = true;
+		                // pageController.processDataLoadError();
 		            }
 				}
 

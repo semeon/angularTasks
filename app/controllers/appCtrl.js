@@ -53,11 +53,11 @@ function AppCtrl($scope, AppSettings, AppState, $cookies, $location, $log) {
     var url = $location.absUrl();
     var ind = url.indexOf('#');
 
-    $log.info('- url: ' + url);
-    $log.info('- ind: ' + ind);
+    // $log.info('- url: ' + url);
+    // $log.info('- ind: ' + ind);
 
     if(ind > 0) result = url.slice(0, ind);
-    $log.info('- result: ' + result);
+    // $log.info('- result: ' + result);
 
     return result;
   }
