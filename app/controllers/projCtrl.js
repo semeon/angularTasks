@@ -40,6 +40,7 @@ function Project(json) {
 
             self.taskTree.id = 'none';
             self.taskTree.title = 'root';
+            self.taskTree.children = [];
             attachChildrenToParent(self.taskTree, self.taskMap, 0);
         }
 
@@ -49,7 +50,8 @@ function Project(json) {
     // -----------------------------------------------------------------------
 
         function attachChildrenToParent(node, fullList, level) {
-            var children = {};
+            // var children = {};
+            var children = [];
             var childrenAttached = false;
 
             for (itemId in fullList) {
@@ -57,7 +59,8 @@ function Project(json) {
 
                 if (item.parentId == node.id) {
                     console.log( '  "' + item.title + '" attached to "' + node.title + '"');
-                    children[itemId] = item;
+                    // children[itemId] = item;
+                    children.push(item);
                     item.level = level;
                     attachChildrenToParent(item, fullList, level+1);
                     childrenAttached = true;

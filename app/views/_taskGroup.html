@@ -31,8 +31,16 @@
 
       <!-- task Tree -->
       <div class="taskTreeRoot" ng-show="project.isExpanded">
+        <ul class="nav nav-list bs-docs-sidenav task-tree">
+        </ul>
 
+<!-- 
           <div ng-include src="taskTreeTemplate"></div>
+
+ -->
+
+          <tree root="project.taskTree"></tree>
+
 
       </div>
       
