@@ -17,9 +17,7 @@ function Project(json) {
         this.selfLink = json.selfLink;
 
         this.tasks = [];
-
-
-        this.taskSet = {};
+        this.taskMap = {};
         this.taskTree = {};        
 
         this.isLoaded = false;
@@ -35,14 +33,14 @@ function Project(json) {
             for (var i = 0; i < tasks.length; i++) {
                 var task = new Task(tasks[i]);
                 self.tasks.push(task);
-                // self.taskSet[task.id] = task;
+                self.taskMap[task.id] = task;
             }
 
-            // // var sortedData = cats = $(data).sort(sortItemsByTitle); 
+            // var sortedData = cats = $(data).sort(sortItemsByTitle); 
 
-            // self.taskTree.id = 'none';
-            // self.taskTree.title = 'root';
-            // attachChildrenToParent(self.taskTree, self.taskSet, 0);
+            self.taskTree.id = 'none';
+            self.taskTree.title = 'root';
+            attachChildrenToParent(self.taskTree, self.taskMap, 0);
         }
 
 
@@ -51,27 +49,27 @@ function Project(json) {
     // -----------------------------------------------------------------------
 
         function attachChildrenToParent(node, fullList, level) {
-            // var children = {};
-            // var childrenAttached = false;
+            var children = {};
+            var childrenAttached = false;
 
-            // for (itemId in fullList) {
-            //     var item = fullList[itemId];
+            for (itemId in fullList) {
+                var item = fullList[itemId];
 
-            //     if (item.parentId == node.id) {
-            //         // console.log( '  "' + item.title + '" attached to "' + node.title + '"');
-            //         children[itemId] = item;
-            //         item.level = level;
-            //         attachChildrenToParent(item, fullList, level+1);
-            //         childrenAttached = true;
-            //     }
-            // }
+                if (item.parentId == node.id) {
+                    console.log( '  "' + item.title + '" attached to "' + node.title + '"');
+                    children[itemId] = item;
+                    item.level = level;
+                    attachChildrenToParent(item, fullList, level+1);
+                    childrenAttached = true;
+                }
+            }
 
-            // if (childrenAttached) {
-            //     node.children = children;
-            //     node.hasSubtasks = true;
-            // }
+            if (childrenAttached) {
+                node.children = children;
+                node.hasSubtasks = true;
+            }
 
-        } // 
+        }
 
     // // Sorting
     // function sortItemsByTitle(a,b) {  

@@ -2,13 +2,13 @@ function AuthCtrl($scope, AppSettings, $location, $log) {
   $scope.sys = AppSettings.sys;
   $scope.auth = AppSettings.auth;
 
-  $log.info('');
-  $log.info('Controller started: ' + 'AuthCtrl');
+  console.log('');
+  console.log('Controller started: ' + 'AuthCtrl');
 
-  $log.info('- accessToken: ' + $scope.auth.accessToken);
+  console.log('- accessToken: ' + $scope.auth.accessToken);
 
   $scope.login = function() {
-    $log.info('- login started...');
+    console.log('- login started...');
 
     var requestUri = '';
     requestUri = requestUri + $scope.auth.requestUriBase + '?';
@@ -17,7 +17,7 @@ function AuthCtrl($scope, AppSettings, $location, $log) {
     requestUri = requestUri + 'response_type=' + $scope.auth.responseType + '&';
     requestUri = requestUri + 'scope=' + $scope.auth.scope + '&';
     // requestUri = requestUri + '&state='' + authModel.state + '&';
-    $log.info('- requestUri: ' + requestUri);
+    console.log('- requestUri: ' + requestUri);
 
     window.location.href = requestUri;
   }

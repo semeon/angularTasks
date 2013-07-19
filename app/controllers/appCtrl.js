@@ -1,6 +1,6 @@
 function AppCtrl($scope, AppSettings, AppState, $cookies, $location, $log) {
-    $log.info('');
-    $log.info('Controller started: ' + 'AppCtrl');
+    console.log('');
+    console.log('Controller started: ' + 'AppCtrl');
 
   // Constructor
   // ---------------------------
@@ -9,7 +9,7 @@ function AppCtrl($scope, AppSettings, AppState, $cookies, $location, $log) {
     $scope.auth = AppSettings.auth;
     $scope.state = AppState;
 
-    $log.info('- accessToken: ' + $scope.auth.accessToken);
+    console.log('- accessToken: ' + $scope.auth.accessToken);
 
     // Logged In
     // -----------------------------------
@@ -18,24 +18,24 @@ function AppCtrl($scope, AppSettings, AppState, $cookies, $location, $log) {
         // $cookies.myCookie = '11111';
         $scope.state.loggedIn = true;
 
-        $log.info('- logged in:' + $scope.state.loggedIn);
+        console.log('- logged in:' + $scope.state.loggedIn);
 
         if ($location.path()!='/main') {
-          $log.info('- redirecting to /main');
+          console.log('- redirecting to /main');
           $location.path('/main'); 
 
         } else {
-          $log.info('- /main');
+          console.log('- /main');
         }
 
 
     // Not Logged In
     // -----------------------------------
       } else {
-        $log.info('- not logged in');
+        console.log('- not logged in');
 
         if ($location.path()!='/welcome') {
-          $log.info('- redirecting to /welcome');
+          console.log('- redirecting to /welcome');
           $location.path('/welcome'); 
         }
       }
@@ -53,11 +53,11 @@ function AppCtrl($scope, AppSettings, AppState, $cookies, $location, $log) {
     var url = $location.absUrl();
     var ind = url.indexOf('#');
 
-    // $log.info('- url: ' + url);
-    // $log.info('- ind: ' + ind);
+    // console.log('- url: ' + url);
+    // console.log('- ind: ' + ind);
 
     if(ind > 0) result = url.slice(0, ind);
-    // $log.info('- result: ' + result);
+    // console.log('- result: ' + result);
 
     return result;
   }

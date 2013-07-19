@@ -31,54 +31,7 @@
           <!-- Task groups --> 
           <div class="row-fluid">
             <div id="taskPaneRoot" class="span12">
-
-            <!-- Project -->
-              <div class="row-fluid" 
-                    ng-repeat="project in projects" 
-                    ng-show="project.isSelected" 
-                    >
-
-                <!-- Header -->
-<!-- 
-                <div class="border-bottom">
-                </div>
- -->
-                  <!-- Title -->
-                  <div class="span3">
-                    <strong>{{project.title}}</strong>
-                  </div>
-
-                  <!-- Controls -->
-                  <div class="span9">
-                    <div class="btn-toolbar pull-right no-margin">
-                      <a class="btn btn-mini zbtn-primary" href="#"><i class="icon-plus zicon-white"></i> New Task</a>
-                      <div class="btn-group">
-                        <a class="btn btn-mini" href="#" onclick="return false;" rel="tooltip" title="Hide project">Collapse</a>
-                        <a class="btn btn-mini" href="#" onclick="return false;" rel="tooltip" title="Hide project">Hide</a>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Separator -->
-
-<!-- 
-                  <div class="span12 border-bottom">
-                  </div>
- -->
-
-                  <!-- task Tree -->
-                  <div class="wellz well-small" style="margin-left: 20px; margin-bottom: 30px;">
-                    <ul class="nav nav-list bs-docs-sidenav task-tree">
-                      <li class=""
-                        ng-repeat="task in project.tasks">
-                        <a href="#" onclick="return false">{{task.title}}</a>
-                      </li>
-                    </ul>
-                  </div>
-
-
-
-              </div>
+            <div ng-include src="taskGroupTemplate"></div>
                 
             </div>
           </div>

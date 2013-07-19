@@ -1,7 +1,10 @@
 function MainCtrl($scope, AppSettings, gTasksApi, $log, $http) {
 
-	$log.info('');
-	$log.info('Controller started: ' + 'MainCtrl');
+	console.log('');
+	console.log('Controller started: ' + 'MainCtrl');
+
+	$scope.taskGroupTemplate = 'app/views/_taskGroup.html';
+	$scope.taskTreeTemplate = 'app/views/_taskTree.html';
 
  	$scope.sys = AppSettings.sys;
 	$scope.auth = AppSettings.auth;
@@ -10,10 +13,11 @@ function MainCtrl($scope, AppSettings, gTasksApi, $log, $http) {
 	// $scope.projects = {};
 	$scope.projects = [];
 
+
 	// Functions: Task pane
 	// ---------------------------------
 		$scope.projectClick = function (project) {
-			$log.info('- project clicked: ' + project.title);
+			console.log('- project clicked: ' + project.title);
 			project.isSelected = !project.isSelected;
 
 			if (project.isSelected) {
@@ -27,7 +31,7 @@ function MainCtrl($scope, AppSettings, gTasksApi, $log, $http) {
 	// Functions: Project lsit
 	// ---------------------------------
 		$scope.projectClick = function (project) {
-			$log.info('- project clicked: ' + project.title);
+			console.log('- project clicked: ' + project.title);
 			project.isSelected = !project.isSelected;
 
 			if (project.isSelected) {
@@ -42,16 +46,16 @@ function MainCtrl($scope, AppSettings, gTasksApi, $log, $http) {
 	// ---------------------------------
 
 		$scope.loadTasks = function(project) {
-			$log.info('** AJAX REQUEST **');
-			$log.info('- starting projects load');
-			$log.info('- request uri: ' + $scope.api.projectsRequestUri);
+			console.log('** AJAX REQUEST **');
+			console.log('- starting projects load');
+			console.log('- request uri: ' + $scope.api.projectsRequestUri);
 
 			// Response processor
 			// -----------------------------------------------
 				var processTaskList = function (data, project) {
-					$log.info('** AJAX RESPONSE **');
-					$log.info('- Task list request answered, project: ' + project.title);
-					$log.info(data);
+					console.log('** AJAX RESPONSE **');
+					console.log('- Task list request answered, project: ' + project.title);
+					console.log(data);
 
 					if (data.items) {      
 						project.addTasks(data.items);
@@ -63,6 +67,10 @@ function MainCtrl($scope, AppSettings, gTasksApi, $log, $http) {
 						// dataLoadErrorOccured = true;
 						// pageController.processDataLoadError();
 					}
+
+					console.log('===================');
+					console.log(project);
+					console.log('===================');
 				}
 
 			// Request
@@ -72,23 +80,23 @@ function MainCtrl($scope, AppSettings, gTasksApi, $log, $http) {
 
 
 		$scope.loadProjects = function() {
-			$log.info('** AJAX REQUEST **');
-			$log.info('- starting projects load');
-			$log.info('- request uri: ' + $scope.api.projectsRequestUri);
+			console.log('** AJAX REQUEST **');
+			console.log('- starting projects load');
+			console.log('- request uri: ' + $scope.api.projectsRequestUri);
 
 			// Response processor
 			// -----------------------------------------------
 				var processProjects = function (data) {
-					$log.info('** AJAX RESPONSE **');
-					$log.info('- Projects list request answered');
-					$log.info(data);
+					console.log('** AJAX RESPONSE **');
+					console.log('- Projects list request answered');
+					console.log(data);
 
 		            if (data.items) {
 		                var items = data.items; 
 		                for (var i = 0; i < items.length; i++) {
 		                    // PROJECT CREATED HERE
 		                    var project = new Project(items[i]);
-		                    $log.info('- creating new project: ' + project.title);
+		                    console.log('- creating new project: ' + project.title);
 		                    $scope.projects.push(project);
 		                    // $scope.projects[project.id] = project;
 		                    // $scope.loadTasks(project);
@@ -114,9 +122,9 @@ function MainCtrl($scope, AppSettings, gTasksApi, $log, $http) {
 
 			// $scope.loadProjects(
 			// 	function (data) {
-			// 		$log.info('--------------');
-			// 		$log.info(data);
-			// 		$log.info('--------------');
+			// 		console.log('--------------');
+			// 		console.log(data);
+			// 		console.log('--------------');
 			// 	}
 			// );
 		}

@@ -37,7 +37,7 @@ function Task(json) {
     // self.dueString = self.dueCustom.format("DD MMM YYYY");
   }
   
-  this.subTasks = new Array;
+  // this.subTasks = new Array;
   this.isExpanded = true;
   this.isInTree = false;
   this.hasSubtasks = false;
