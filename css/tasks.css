@@ -20,7 +20,10 @@ hr {
 }
 
 
-
+.taskTreeRoot {
+	margin-bottom: 40px; 
+	margin-top: 20px;
+}
 
 
 
@@ -51,7 +54,7 @@ hr {
 
 	.bs-docs-sidenav > li:first-child > a {
 		/*margin-top: 0px;*/
-		/*border-top: 1px solid #ddd;*/
+		border-top: 1px solid #ddd;
 	}
 
 	.bs-docs-sidenav > li:last-child > a {
