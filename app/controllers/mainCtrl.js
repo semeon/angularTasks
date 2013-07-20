@@ -3,6 +3,7 @@ function MainCtrl($scope, AppSettings, gTasksApi, $log, $http) {
 	console.log('');
 	console.log('Controller started: ' + 'MainCtrl');
 
+	$scope.projListTemplate = 'app/views/_projList.html';
 	$scope.taskGroupTemplate = 'app/views/_taskGroup.html';
 	$scope.taskTreeTemplate = 'app/views/_taskTree.html';
 
@@ -14,71 +15,9 @@ function MainCtrl($scope, AppSettings, gTasksApi, $log, $http) {
 	$scope.projects = [];
 
 
-	// Functions: Task pane
-	// ---------------------------------
-		$scope.projectClick = function (project) {
-			console.log('- project clicked: ' + project.title);
-			project.isSelected = !project.isSelected;
-
-			if (project.isSelected) {
-				project.cssClass = 'active';	
-			} else {
-				project.cssClass = '';	
-			}
-		}
-
-
-	// Functions: Project lsit
-	// ---------------------------------
-		$scope.projectClick = function (project) {
-			console.log('- project clicked: ' + project.title);
-			project.isSelected = !project.isSelected;
-
-			if (project.isSelected) {
-				project.cssClass = 'active';
-				$scope.loadTasks(project);
-			} else {
-				project.cssClass = '';	
-			}
-		}
 
 	// Functions: Data
 	// ---------------------------------
-
-		$scope.loadTasks = function(project) {
-			console.log('** AJAX REQUEST **');
-			console.log('- starting projects load');
-			console.log('- request uri: ' + $scope.api.projectsRequestUri);
-
-			// Response processor
-			// -----------------------------------------------
-				var processTaskList = function (data, project) {
-					console.log('** AJAX RESPONSE **');
-					console.log('- Task list request answered, project: ' + project.title);
-					console.log(data);
-
-					if (data.items) {      
-						project.addTasks(data.items);
-
-					} else if (data.error) {
-						// dataLoadErrorOccured = true;
-						// pageController.processDataLoadError(data.error);
-					} else {
-						// dataLoadErrorOccured = true;
-						// pageController.processDataLoadError();
-					}
-
-					console.log('===================');
-					console.log(project);
-					console.log('===================');
-				}
-
-			// Request
-			// -----------------------------------------------
-			    $scope.api.requestTasks(project, processTaskList);
-		}
-
-
 		$scope.loadProjects = function() {
 			console.log('** AJAX REQUEST **');
 			console.log('- starting projects load');

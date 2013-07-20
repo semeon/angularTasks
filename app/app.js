@@ -16,13 +16,7 @@ appModule.directive("tree", function($compile) {
     return {
         restrict: "E",
         scope: {root: '='},
-        template: 
-            '<ul>' + 
-                '<li ng-repeat="task in root.children">' + 
-		            '<p>{{task.title}}</p>' +
-                    '<tree root="task"></tree>' +
-                '</li>' +
-            '</ul>',
+        templateUrl: 'app/views/_taskTree.html',
         compile: function(tElement, tAttr) {
             var contents = tElement.contents().remove();
             var compiledContents;

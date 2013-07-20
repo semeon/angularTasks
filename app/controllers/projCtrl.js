@@ -1,83 +1,51 @@
-function Project(json) {
- 
-    var self = this;
+function ProjCtrl($scope, AppSettings, gTasksApi, $log, $http) {
 
-    /* JSON format:
-    "kind": "tasks#taskList",
-    "id": "MDIxODQ2OTM2MTQ0OTM3MDQ4MTU6MDow",
-    "title": "My Tasks",
-    "selfLink": "https://www.googleapis.com/tasks/v1/users/@me/lists/MDIxODQ2OTM2MTQ0OTM3MDQ4MTU6MDow"
-    */
+    console.log('');
+    console.log('Controller started: ' + 'ProjCtrl');
 
-    // -----------------------------------------------------------------------
-    // CONSTRUCTOR
-    // -----------------------------------------------------------------------
-        this.id = json.id;
-        this.title = json.title;
-        this.selfLink = json.selfLink;
+    $scope.loadTasks = function(project) {
+        console.log('** AJAX REQUEST **');
+        console.log('- starting projects load');
+        console.log('- request uri: ' + $scope.api.projectsRequestUri);
 
-        this.tasks = [];
-        this.taskMap = {};
-        this.taskTree = {};        
+        // Response processor
+        // -----------------------------------------------
+            var processTaskList = function (data, project) {
+                console.log('** AJAX RESPONSE **');
+                console.log('- Task list request answered, project: ' + project.title);
+                console.log(data);
 
-        this.isLoaded = false;
-        this.isSelected = false;
-        this.isExpanded = true;
+                if (data.items) {      
+                    project.addTasks(data.items);
 
-
-    // -----------------------------------------------------------------------
-    // Public Methods
-    // -----------------------------------------------------------------------
-
-        this.addTasks = function(tasks) {
-            for (var i = 0; i < tasks.length; i++) {
-                var task = new Task(tasks[i]);
-                self.tasks.push(task);
-                self.taskMap[task.id] = task;
-            }
-
-            // var sortedData = cats = $(data).sort(sortItemsByTitle); 
-
-            self.taskTree.id = 'none';
-            self.taskTree.title = 'root';
-            self.taskTree.children = [];
-            attachChildrenToParent(self.taskTree, self.taskMap, 0);
-        }
-
-
-    // -----------------------------------------------------------------------
-    // Private members
-    // -----------------------------------------------------------------------
-
-        function attachChildrenToParent(node, fullList, level) {
-            // var children = {};
-            var children = [];
-            var childrenAttached = false;
-
-            for (itemId in fullList) {
-                var item = fullList[itemId];
-
-                if (item.parentId == node.id) {
-                    console.log( '  "' + item.title + '" attached to "' + node.title + '"');
-                    // children[itemId] = item;
-                    children.push(item);
-                    item.level = level;
-                    attachChildrenToParent(item, fullList, level+1);
-                    childrenAttached = true;
+                } else if (data.error) {
+                    // dataLoadErrorOccured = true;
+                    // pageController.processDataLoadError(data.error);
+                } else {
+                    // dataLoadErrorOccured = true;
+                    // pageController.processDataLoadError();
                 }
+
+                console.log('===================');
+                console.log(project);
+                console.log('===================');
             }
 
-            if (childrenAttached) {
-                node.children = children;
-                node.hasSubtasks = true;
-            }
+        // Request
+        // -----------------------------------------------
+            $scope.api.requestTasks(project, processTaskList);
+    }
 
+
+    $scope.projectClick = function (project) {
+        console.log('- project clicked: ' + project.title);
+        project.isSelected = !project.isSelected;
+
+        if (project.isSelected) {
+            $scope.loadTasks(project);
         }
+    }
 
-    // // Sorting
-    // function sortItemsByTitle(a,b) {  
-    //     return a.title.toLowerCase() > b.title.toLowerCase() ? 1 : -1;  
-    // } // ---------------------------------------------------------------------
 
- 
+
 }
