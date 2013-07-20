@@ -14,5 +14,12 @@ function TaskCtrl($scope) {
 		task.isSelected = !task.isSelected;
 	}
 
+	$scope.taskEditClick = function (task) {
+		console.log('* taskEditClick: ' + task.title);
+	}
+
+	$scope.taskDeleteClick = function (task) {
+		console.log('* taskDeleteClick: ' + task.title);
+	}
 
 }
