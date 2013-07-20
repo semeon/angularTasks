@@ -82,7 +82,7 @@ hr {
     }
 
 	.task-tree > li > a > div.taskChevron {
-	  margin-left: -10px; width: 20px; height: 10px;
+	  margin-left: -35px; width: 20px; height: 10px;
 	}
 
 	.task-tree > li > a > label.checkbox {
