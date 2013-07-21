@@ -25,21 +25,19 @@ hr {
 }
 
 
-/* Sidenav from BS Docs - applief for task tree */
-/* -------------------------------------------------- */
 
-    .task-tree {
-      margin-left: 0px;
-      margin-right: 0;
-      margin-bottom: 0px;
-      padding: 0;
-      padding-left: 20px;
-      /*padding-bottom: 5px;*/
-      background-color: #fff;
-      overflow: visible
-    }
+.task-tree {
+  margin-left: 0px;
+  margin-right: 0;
+  margin-bottom: 0px;
+  padding: 0;
+  padding-left: 20px;
+  /*padding-bottom: 5px;*/
+  background-color: #fff;
+  overflow: visible
+}
 
-    .task-tree > li > a {
+    li.taskTreeLi > a {
       display: block;
       margin-left: 0;
       margin-right: 0px;
@@ -51,17 +49,17 @@ hr {
       border-bottom: 0px solid #ddd;
     }
 
-    .task-tree > li:first-child > a {
+    li.taskTreeLi:first-child > a {
         /*margin-top: 0px;*/
         /*border-top: 1px solid #ddd;*/
     }
 
-    .task-tree > li:last-child > a {
+    li.taskTreeLi:last-child > a {
         /*margin-bottom: 0px;*/
         border-bottom: 0px solid #ddd;
     }
 
-    .task-tree > .active > a {
+    .taskTreeLi.active > a {
       position: relative;
       z-index: 2;
       text-shadow: 0 1px 0 rgba(0,0,0,.15);
@@ -70,11 +68,12 @@ hr {
               box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
     }
 
-    .task-tree > li > a:hover {
+    li.taskTreeLi > a:hover {
       background-color: #f5f5f5;
     }
 
-	.task-tree > li > div.taskChevron {
+	li.taskTreeLi > .taskChevron {
+      display: block;
       padding-top: 6px;
       opacity: 0.5;		
 	  margin-left: -20px; 
@@ -82,15 +81,19 @@ hr {
 	  height: 10px;
 	}
 
-	.task-tree > li > a > label.checkbox {
-	  display: inline; padding-left: 0px;
+	.taskCheckbox {
+	  display: inline; 
+	  margin-top: 8px;
+	  margin-left: 10px;
+	  padding-left: 0px;
 	}
 
-	.task-tree > li > a > label.checkbox > input {
-	  margin-left:0px; margin-top:3px;
+	.taskCheckbox > input {
+	  margin-left: 0px!important; 
+	  margin-top: 3px;
 	}
 
-	.task-tree > li > a > span.taskName {
+	li.taskTreeLi > a > span.taskName {
 	  margin-left: 8px;
 	}
 

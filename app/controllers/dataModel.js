@@ -97,6 +97,20 @@ function Task(json) {
     "notes": "Task description\nSecond line",
     "status": "needsAction"  
     "due": "2011-10-25T00:00:00.000Z"
+
+    ----------------------------------------------
+
+    "kind": "tasks#task",
+    "id": "MDIxODQ2OTM2MTQ0OTM3MDQ4MTU6MjA5MzE5ODI1ODo4NzM2NzA1OTQ",
+    "etag": "\"6RPyiEGJLF05eT5QboB7G3IXo-w/MTM0NzEyMjYyOA\"",
+    "title": "Projects sorting",
+    "updated": "2013-07-21T08:57:38.000Z",
+    "selfLink": "https://www.googleapis.com/tasks/v1/lists/MDIxODQ2OTM2MTQ0OTM3MDQ4MTU6MjA5MzE5ODI1ODow/tasks/MDIxODQ2OTM2MTQ0OTM3MDQ4MTU6MjA5MzE5ODI1ODo4NzM2NzA1OTQ",
+    "position": "00000000002147483647",
+    "status": "completed",
+    "completed": "2013-07-21T08:57:38.000Z"
+
+
   */
 
   this.id = json.id;
@@ -121,7 +135,7 @@ function Task(json) {
     // self.dueString = self.dueCustom.format("DD MMM YYYY");
   }
   
-  this.isExpanded = true;
+  this.isExpanded = false;
   this.isInTree = false;
   this.hasSubtasks = false;
   this.level = 0;

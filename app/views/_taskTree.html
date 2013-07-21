@@ -1,17 +1,31 @@
 <ul class="nav nav-list task-tree">
 
-  <li ng-repeat="task in root.children" ng-controller="TaskCtrl" ng-class="{active:task.isSelected}">
-      <div href ng-click="chevronClick(task)"
+  <li ng-repeat="task in root.children | orderBy:'title'" 
+      ng-controller="TaskCtrl" 
+      ng-class="{active:task.isSelected}"
+      class="taskTreeLi">
+
+
+
+      <div  href ng-click="chevronClick(task)"
             class="pull-left taskChevron" 
-            title="Expand or collapse subtasks">
+            title="Show or hide subtasks">
+
           <i  ng-class="{'icon-chevron-down':task.isExpanded, 'icon-chevron-right':!task.isExpanded}" 
               ng-show="task.hasSubtasks"></i>
+
       </div>
 
-      <a href="" ng-click="taskItemClick(task)">
-        <label  class="checkbox pull-left">
-          <input type="checkbox">
-        </label>
+
+      <label  class="checkbox pull-left taskCheckbox">
+        <input type="checkbox">
+      </label>
+
+      <a  href="" 
+          ng-clickz="taskItemClick(task)"
+          >
+
+
         <span class="pull-left taskName" title="{{task.title}}">{{task.title}}</span>
         <span class="pull-right taskControls">
             <!-- 
@@ -20,7 +34,10 @@
             <i class="icon-trash pull-right" ng-click="taskDeleteClick(task)"></i>
             <i class="icon-pencil pull-right" ng-click="taskEditClick(task)"></i> 
         </span>
+
       </a>
+
+
 
     <div class="border-bottom"></div>
 

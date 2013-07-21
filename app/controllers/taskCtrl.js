@@ -11,7 +11,7 @@ function TaskCtrl($scope) {
 
 	$scope.taskItemClick = function (task) {
 		console.log('* taskItemClick: ' + task.title);
-		task.isSelected = !task.isSelected;
+		// task.isSelected = !task.isSelected;
 	}
 
 	$scope.taskEditClick = function (task) {
