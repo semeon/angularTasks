@@ -4,7 +4,7 @@
       ng-controller="TaskCtrl" 
       ng-class="{active:task.isSelected}"
       class="taskTreeLi">
-
+      <!-- filter: {status: 'needsAction'}  -->
 
 
       <div  href ng-click="chevronClick(task)"
@@ -18,23 +18,33 @@
 
 
       <label  class="checkbox pull-left taskCheckbox">
-        <input type="checkbox">
+        <input  type="checkbox" 
+                ng-checked="task.isCompleted"
+                ng-click="checkboxClick(task)">
       </label>
 
       <a  href="" 
-          ng-clickz="taskItemClick(task)"
+          class="taskName"
+          ng-class="{taskCompleted:task.isCompleted}"
           >
+        <span class="pull-left" 
+              title="{{task.title}}"
+              ng-click="taskNameClick(task)"
+              >{{task.title}}</span>
 
-
-        <span class="pull-left taskName" title="{{task.title}}">{{task.title}}</span>
         <span class="pull-right taskControls">
             <!-- 
               Edit, Delete, Move?
             -->
-            <i class="icon-trash pull-right" ng-click="taskDeleteClick(task)"></i>
-            <i class="icon-pencil pull-right" ng-click="taskEditClick(task)"></i> 
-        </span>
+            <i  class="icon-trash pull-right" 
+                ng-click="taskDeleteClick(task)"
+                title="Delete task"></i>
 
+            <i  class="icon-pencil pull-right" 
+                ng-click="taskEditClick(task)"
+                title="Edit task"></i> 
+
+        </span>
       </a>
 
 

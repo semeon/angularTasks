@@ -19,12 +19,15 @@ hr {
 	text-transform: uppercase;
 }
 
+#taskPaneRoot {
+	margin-top: 38px;
+
+}
+
 .taskTreeRoot {
 	margin-bottom: 40px; 
 	margin-top: 10px;
 }
-
-
 
 .task-tree {
   margin-left: 0px;
@@ -37,29 +40,32 @@ hr {
   overflow: visible
 }
 
-    li.taskTreeLi > a {
+    li.taskTreeLi > a.taskName {
       display: block;
       margin-left: 0;
       margin-right: 0px;
       margin-bottom: 0px;
       margin-top: 0px;
       height: 18px;
-      padding: 8px 14px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      padding-left: 32px;
+      padding-right: 8px;
       border-top: 0px solid #ddd;
       border-bottom: 0px solid #ddd;
     }
 
-    li.taskTreeLi:first-child > a {
+    li.taskTreeLi:first-child > a.taskName {
         /*margin-top: 0px;*/
         /*border-top: 1px solid #ddd;*/
     }
 
-    li.taskTreeLi:last-child > a {
+    li.taskTreeLi:last-child > a.taskName {
         /*margin-bottom: 0px;*/
         border-bottom: 0px solid #ddd;
     }
 
-    .taskTreeLi.active > a {
+    .taskTreeLi.active > a.taskName {
       position: relative;
       z-index: 2;
       text-shadow: 0 1px 0 rgba(0,0,0,.15);
@@ -68,7 +74,13 @@ hr {
               box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
     }
 
-    li.taskTreeLi > a:hover {
+    .taskName.taskCompleted span{
+    	/*text-decoration: line-through;*/
+    	color: #999;
+    	font-style: italic;
+    }
+
+    a.taskName:hover {
       background-color: #f5f5f5;
     }
 
@@ -79,6 +91,7 @@ hr {
 	  margin-left: -20px; 
 	  width: 20px; 
 	  height: 10px;
+	  cursor: pointer;
 	}
 
 	.taskCheckbox {
@@ -93,6 +106,11 @@ hr {
 	  margin-top: 3px;
 	}
 
+	.taskCheckbox > input:checked {
+	  opacity: 0.5;
+	}
+
+
 	li.taskTreeLi > a > span.taskName {
 	  margin-left: 8px;
 	}
@@ -103,9 +121,9 @@ hr {
 	  margin-top: -5px; 
 	  margin-right: -75px; 
 	  padding-top: 6px; 
-	  padding-right: 5px; 
+	  padding-right: 10px; 
+	  padding-left:  15px; 
 	  height: 24px;
-	  width: 60px;
 	}
 
 	a:hover > .taskControls {

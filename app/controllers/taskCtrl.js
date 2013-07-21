@@ -9,8 +9,9 @@ function TaskCtrl($scope) {
 		// $event.stopPropagation();
 	}
 
-	$scope.taskItemClick = function (task) {
-		console.log('* taskItemClick: ' + task.title);
+	$scope.taskNameClick = function (task) {
+		console.log('* taskNameClick: ' + task.title);
+		console.log(task);
 		// task.isSelected = !task.isSelected;
 	}
 
@@ -20,6 +21,11 @@ function TaskCtrl($scope) {
 
 	$scope.taskDeleteClick = function (task) {
 		console.log('* taskDeleteClick: ' + task.title);
+	}
+
+	$scope.checkboxClick = function (task) {
+		console.log('* taskDeleteClick: ' + task.title);
+		task.isCompleted = !task.isCompleted; 		
 	}
 
 }
